@@ -1,0 +1,13 @@
+database:
+    build: ./database
+    environment:
+        - POSTGRES_PASSWORD=postgres
+
+webapp:
+    build: ./webapp
+    links:
+        - database
+    ports:
+        - "8080:80"
+    volumes:
+        - ./webapp:/var/www/html

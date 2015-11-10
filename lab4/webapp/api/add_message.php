@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $st = $db->prepare('INSERT INTO messages(name, message, image) VALUES (:name, :msg, :img)');
     $st->bindValue(':name', $data['name']);
     $st->bindValue(':msg', $data['message']);
-    $st->bindParam(':img', $n = null, PDO::PARAM_LOB);
+    $st->bindValue(':img', $data['image']);
     $st->execute();
 
 } else {

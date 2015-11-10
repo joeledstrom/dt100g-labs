@@ -23,7 +23,6 @@ var Guestbook = React.createClass({
     setInterval(this.refresh, 3000);
   },
   onSubmit: function(item) {
-    console.log(item)
     $.ajax({
       url: "api/add_message.php",
       dataType: 'text',
@@ -52,18 +51,29 @@ var MessageForm = React.createClass({
     e.preventDefault()
     var name = this.refs.name.value.trim();
     var msg = this.refs.message.value.trim();
+    var img = this.refs.imageFile.files[0];
     if (!name || !msg) {
       return;
     }
-    this.props.onSubmit({name: name, message: msg});
-    this.refs.name.value = '';
-    this.refs.message.value = '';
+    if (img) {
+      var reader  = new FileReader();
+      reader.onloadend = function () {
+        this.props.onSubmit({name: name, message: msg, image: reader.result});
+        this.refs.form.reset();
+      }.bind(this);
+      reader.readAsDataURL(img);
+    } else {
+      this.props.onSubmit({name: name, message: msg});
+      this.refs.form.reset();
+    }
   },
   render: function() {
     return (
-      <form className="message_form" onSubmit={this.onSubmit}>
-        <input type="text" placeholder="Name" ref="name"/>
-        <textarea placeholder="Message" ref="message"/>
+      <form className="message_form" onSubmit={this.onSubmit} ref="form">
+        <input type="text" placeholder="Name" ref="name" />
+        <textarea placeholder="Message" ref="message" />
+        <input type="file" ref="imageFile" accept="image/*" />
+        <img class="preview_image" ref="preview"></img>
         <input type="submit" />
       </form>
     );
@@ -74,11 +84,12 @@ var MessageList = React.createClass({
   render: function() {
     return (
       <div className="message_list">
-        {this.props.items.map(function(item) {
-          return <div className="message">
-            <b>{item.name}:</b> {item.message}
-          </div>
-        })}
+          {this.props.items.map(function(item) {
+            return <div className="message">
+              <b>{item.name}:</b> {item.message}
+              <img src={item.image}></img>
+            </div>
+          })}
       </div>
     );
   }

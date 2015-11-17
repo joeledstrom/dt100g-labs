@@ -1,0 +1,43 @@
+.message_form label {
+  display: block;
+}
+
+.message_form input {
+  display: block;
+}
+
+.message_form textarea {
+  display: block;
+}
+
+.message_form {
+  background-color: #aaa;
+  border-radius: 7px;
+  padding: 10px;
+}
+
+
+.guest_book {
+  margin: 10px;
+  width: 400px;
+  margin: 0px auto;
+}
+
+.message_list {
+  margin: 10px 0px;
+}
+
+.message_list .message {
+  margin: 10px 0px;
+  background-color: #aaa;
+  border-radius: 7px;
+  padding: 10px;
+}
+
+.message_list .message .text {
+  margin: 5px 0px;
+}
+
+.message_list .message img {
+  width: 380px;
+}

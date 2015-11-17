@@ -3,8 +3,14 @@ require('common.php');
 
 
 header('Content-Type: application/json');
-$query = $db->query('SELECT name, message, image FROM messages ORDER BY created DESC LIMIT 10');
-$data = json_encode($query->fetchAll(PDO::FETCH_ASSOC));
+$query = $db->query('SELECT * FROM messages ORDER BY created DESC LIMIT 10');
+$results = $query->fetchAll();
+
+foreach ($results as &$row) {
+  $row['created'] = date('Y-m-d H:i', strtotime($row['created']));
+}
+
+$data = json_encode($results);
 if ($data === false) {
   error_log("Error");
   http_response_code(500);

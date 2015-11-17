@@ -70,9 +70,9 @@ var MessageForm = React.createClass({
   render: function() {
     return (
       <form className="message_form" onSubmit={this.onSubmit} ref="form">
-        <input type="text" placeholder="Name" ref="name" />
-        <textarea placeholder="Message" ref="message" />
-        <input type="file" ref="imageFile" accept="image/*" />
+        <label>Name<input type="text" placeholder="Your Name" ref="name" /></label>
+        <label>Message<textarea placeholder="Message" ref="message" /></label>
+        <label>Attach picture<input type="file" ref="imageFile" accept="image/*" /></label>
         <img class="preview_image" ref="preview"></img>
         <input type="submit" />
       </form>
@@ -86,8 +86,8 @@ var MessageList = React.createClass({
       <div className="message_list">
           {this.props.items.map(function(item) {
             return <div className="message">
-              <b>{item.name}:</b> {item.message}
-              <img src={item.image}></img>
+              <div className="text">[<i>{item.created}</i>] <b>{item.name}:</b> {item.message}</div>
+              {item.image ? <img src={item.image}></img> : ""}
             </div>
           })}
       </div>

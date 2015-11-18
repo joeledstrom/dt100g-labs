@@ -2,10 +2,53 @@
 <html>
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <title>Page Title</title>
-    
+    <title>Lab1</title>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    
+
+      <form>
+        <label><span>Företag:</span><input type="text" name="company" value="DesignSpecialisten" /></label>
+        <label><span>Namn:</span><input type="text" name="name" value="Mårten Gås" /></label>
+        <label><span>Titel:</span><input type="text" name="title" value="Tänkare" /></label>
+        <label><span>Telefon:</span><input type="text" name="phone" value="176 167" /></label>
+        <label><span>E-post:</span><input type="email" name="email" value="martin.gas@sov.nu"/></label>
+        <label><span>Bakgrundsfärg:</span>
+          <select name="background-color">
+            <option value="#A4CDFF">Ljusblå</option>
+            <option value="#E0CF6F">Ljusgul</option>
+            <option value="#FFFFFF">Vit</option>
+            <option value="#6FFFFF">Turkos</option>
+          </select>
+        </label>
+        <label><span>Textfärg:</span>
+          <select name="color">
+            <option value="#000000">Svart</option>
+            <option value="#0000FF">Blå</option>
+            <option value="#FF0000">Röd</option>
+            <option value="#008000">Mörkgrön</option>
+          </select>
+        </label>
+        <label><span>Typsnitt:</span>
+          <select name="font-family">
+            <option value="Verdana">Verdana</option>
+            <option value="Arial">Arial</option>
+            <option value="Tahoma">Tahoma</option>
+            <option value="Impact">Impact</option>
+          </select>
+        </label>
+        <span></span><input id="resetButton" type="button" value="Återställ" />
+        <input id="printButton" type="button" value="Skriv ut" />
+      </form>
+
+    <div id="card" style="display: none">
+      <h1 id="company"><h1>
+      <h2 id="name"></h2>
+      <h3 id="title"></h3>
+      <h2>Tfn <span id="phone"></span></h2>
+      <h4>E-post: <span id="email"></span></h4>
+    </div>
+    <script src="jquery-1.11.3.min.js"></script>
+    <script src="main.js"></script>
   </body>
 </html>

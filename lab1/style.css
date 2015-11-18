@@ -1,0 +1,38 @@
+form span {
+  display: inline-block;
+  width: 140px;
+  text-align: right;
+}
+
+form label {
+  display: block;
+}
+
+#card {
+  display: inline-block;
+  padding: 5px;
+}
+
+#card h1 {
+  margin: 0px;
+  font-weight: normal;
+  font-size: 26px;
+}
+
+#card h2 {
+  margin: 0px;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+#card h3 {
+  margin: 0px 0px 10px 0px;
+  font-weight: normal;
+  font-size: 12px;
+}
+
+#card h4 {
+  margin: 0px;
+  font-weight: normal;
+  font-size: 12px;
+}

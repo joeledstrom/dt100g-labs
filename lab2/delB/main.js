@@ -26,7 +26,7 @@ var Game = function() {
     
     return {
         
-        // PUBLIC METHODS: 12 13 14 15
+        // PUBLIC METHODS:
         
         reset: function() {
             shuffleBoard();
